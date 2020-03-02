@@ -1,2 +1,3 @@
 # tome
-TEST
+
+https://code.visualstudio.com/docs/python/tutorial-django
