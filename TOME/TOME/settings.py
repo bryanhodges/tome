@@ -76,8 +76,11 @@ WSGI_APPLICATION = 'TOME.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': "sql_server.pyodbc",
+        'HOST': "tome.database.windows.net",
+        "NAME":"tome",
+        "USER": "lj553650",
+        "PASSWORD": "Duff153z"
     }
 }
 
