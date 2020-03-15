@@ -10,17 +10,18 @@
 }
 
 /*Class with image */
-.fill {
-    background-image: url('https://img.pngio.com/tan-index-card-clip-art-at-clkercom-vector-clip-art-online-note-card-png-600_359.png');
+.notecard {
+    background-color: white;
     position: relative;
     height: 200px;
-    width: 300px;
-    border: solid black 4px;
-
+    width: 90%;
+    margin: 0 auto;
+    border: solid black 3px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
     cursor: pointer;
 }
 
-.empty {
+.emptyColumn {
     border: 1px black solid;
     background-color: white;
     float: left;
@@ -29,15 +30,30 @@
     padding: 10px;
 }
 
-.hold {
-    border: solid #ccc 4px;
+.columnWhileHeld {
+    border: solid rgb(0, 0, 0) 4px;
 }
 
 .hovered {
-    background: #f4f4f4;
+    background: rgba(151, 151, 151, 0.425);
     border-style: dashed;
 }
 
 .invisible {
     display: none;
+}
+
+.mainBody {
+    margin: 20px;
+}
+
+.notecardText {
+    margin: 20px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.notecardText:hover {
+    cursor: text;
+    text-shadow: 2px 2px 5px red;
 }

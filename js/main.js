@@ -1,43 +1,55 @@
-const fill = document.querySelector('.fill');
-const empties = document.querySelectorAll('.empty');
+const notecard = document.querySelector('.notecard');
+const emptyColumns = document.querySelectorAll('.emptyColumn');
 
 // Fill listeners
-fill.addEventListener('dragstart', dragStart);
-fill.addEventListener('dragend', dragEnd);
+notecard.addEventListener('dragstart', dragStart);
+notecard.addEventListener('dragend', dragEnd);
+
+
+
 
 // Loop through empty boxes and add listeners
-for (const empty of empties) {
-  empty.addEventListener('dragover', dragOver);
-  empty.addEventListener('dragenter', dragEnter);
-  empty.addEventListener('dragleave', dragLeave);
-  empty.addEventListener('drop', dragDrop);
+for (const emptyColumn of emptyColumns) {
+  emptyColumn.addEventListener('dragover', dragOver);
+  emptyColumn.addEventListener('dragenter', dragEnter);
+  emptyColumn.addEventListener('dragleave', dragLeave);
+  emptyColumn.addEventListener('drop', dragDrop);
 }
 
-// Drag Functions
 
+// Drag Functions
 function dragStart() {
-  this.className += ' hold';
+  this.className += ' columnWhileHeld';
+  //Stops item from being fully invisible until you drag it where you want it.
   setTimeout(() => (this.className = 'invisible'), 0);
+  console.log('Dragging has started');
 }
 
 function dragEnd() {
-  this.className = 'fill';
+  this.className = 'notecard';
+  console.log('Dragging Ended');
 }
 
 function dragOver(e) {
   e.preventDefault();
+  console.log('Dragging Over');
 }
 
 function dragEnter(e) {
   e.preventDefault();
-  this.className += ' hovered';
+  this.className += ' columnWhileHeld';
+  console.log('Dragging Entered');
 }
 
 function dragLeave() {
-  this.className = 'empty';
+  this.className = 'emptyColumn';
+  console.log('Dragging Leave');
 }
 
 function dragDrop() {
-  this.className = 'empty';
-  this.append(fill);
+  this.className = 'emptyColumn';
+  this.append(notecard);
+  console.log('Dragging Dropped');
 }
+
+
