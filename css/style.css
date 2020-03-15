@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/*Class with image */
+.fill {
+    background-image: url('https://img.pngio.com/tan-index-card-clip-art-at-clkercom-vector-clip-art-online-note-card-png-600_359.png');
+    position: relative;
+    height: 200px;
+    width: 300px;
+    border: solid black 4px;
+
+    cursor: pointer;
+}
+
+.empty {
+    border: 1px black solid;
+    background-color: white;
+    float: left;
+    width: 33.33%;
+    height: 900px;
+    padding: 10px;
+}
+
+.hold {
+    border: solid #ccc 4px;
+}
+
+.hovered {
+    background: #f4f4f4;
+    border-style: dashed;
+}
+
+.invisible {
+    display: none;
+}
