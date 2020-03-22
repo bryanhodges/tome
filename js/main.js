@@ -1,55 +1,40 @@
-const notecard = document.querySelector('.notecard');
-const emptyColumns = document.querySelectorAll('.emptyColumn');
+//Everything here is for testing purposes. There will need to be ways to call from db and also save card position to db. As well as ways to edit cards
 
-// Fill listeners
-notecard.addEventListener('dragstart', dragStart);
-notecard.addEventListener('dragend', dragEnd);
+$(document).ready(function () {
+  //generates the notecards on page load - this will likely call from a db in the future
+  for (let index = 1; index < 4; index++) {
+    $('#slot3').append("<div class='notecard' value = "+index+" id=card"+index+
+    " draggable='true' ondragstart='dragCardStart(event)'onClick='checkSlot(event)'>test card "+index+"</div>");
+  }
+});
 
+function allowCardDrop(ev) {
+  ev.preventDefault(); // default is not to allow drop
+}
 
-
-
-// Loop through empty boxes and add listeners
-for (const emptyColumn of emptyColumns) {
-  emptyColumn.addEventListener('dragover', dragOver);
-  emptyColumn.addEventListener('dragenter', dragEnter);
-  emptyColumn.addEventListener('dragleave', dragLeave);
-  emptyColumn.addEventListener('drop', dragDrop);
+//When you start dragging a card this function activates with the event of dragStart. It grabs the targets id of the card being dragged
+function dragCardStart(ev) {
+  ev.dataTransfer.setData("text/plain", ev.target.id);
 }
 
 
-// Drag Functions
-function dragStart() {
-  this.className += ' columnWhileHeld';
-  //Stops item from being fully invisible until you drag it where you want it.
-  setTimeout(() => (this.className = 'invisible'), 0);
-  console.log('Dragging has started');
+function dropCard(ev) {
+  ev.preventDefault(); // default is not to allow drop
+  let cardId = ev.dataTransfer.getData("text/plain");
+  let sourceCardSlot = document.getElementById(cardId);
+
+
+  // ev.target.id here is the id of target Object of the drop
+  let targetElement = document.getElementById(ev.target.id)
+  let targetParentElement = targetElement.parentElement;
+  
+  //Checks to see if there is an card in the slot. If there is, it will replace it with the new one.
+    if (targetElement.className === sourceCardSlot.className) {
+      //Removes the current card and replaces it with the new one
+      targetParentElement.removeChild(targetElement);
+      targetParentElement.appendChild(sourceCardSlot);
+    } else {
+      // Append to the list
+      targetElement.appendChild(sourceCardSlot);
+    }
 }
-
-function dragEnd() {
-  this.className = 'notecard';
-  console.log('Dragging Ended');
-}
-
-function dragOver(e) {
-  e.preventDefault();
-  console.log('Dragging Over');
-}
-
-function dragEnter(e) {
-  e.preventDefault();
-  this.className += ' columnWhileHeld';
-  console.log('Dragging Entered');
-}
-
-function dragLeave() {
-  this.className = 'emptyColumn';
-  console.log('Dragging Leave');
-}
-
-function dragDrop() {
-  this.className = 'emptyColumn';
-  this.append(notecard);
-  console.log('Dragging Dropped');
-}
-
-

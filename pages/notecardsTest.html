@@ -27,8 +27,14 @@
         </div>
     </nav>
 
+    <div class="boardLayout">
+        <div id="slot1" class="emptyBoards" ondrop="dropCard(event)" ondragover="allowCardDrop(event)"><div class="headers"><h1>Completed</h1></div></div>   
+        <div id="slot2" class="emptyBoards" ondrop="dropCard(event)" ondragover="allowCardDrop(event)"><div class="headers"><h1>In Progress</h1></div></div>   
+        <div id="slot3" class="emptyBoards" ondrop="dropCard(event)" ondragover="allowCardDrop(event)"><div class="headers"><h1>Incomplete</h1></div></div>   
+     </div>
 
-    <div class="mainBody">
+
+    <!-- <div class="mainBody">
         <div class="row ">
             <div class="emptyColumn">
                 <h1 style="text-align: center; text-decoration: underline;">Incomplete</h1>
@@ -45,8 +51,8 @@
 
             </div>
           </div>    
-    </div>
-  
+    </div> -->
+
 
     <script src="../js/main.js"></script>
 </body>
